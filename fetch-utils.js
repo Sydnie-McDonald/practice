@@ -15,14 +15,21 @@ export async function getMovies() {
 
 export async function getMoviesWithDirector() {
   // return the list of all the movies with their director
+  const resp = await client.from("movies").select("*");
+  const movieInfo = await client.from("directors").select("name");
+  return checkError(resp, movieInfo);
 }
 
 export async function getDirectorNames() {
   // return the list of the director's names
+  const director = await client.from("directors").select("name");
+  return checkError(director);
 }
 
 export async function getMovieById(id) {
   // return the movie with the given id
+  const movieId = await client.from("movies").select("id");
+  return checkError(movieId);
 }
 
 export async function getMovieByTitle(title) {
