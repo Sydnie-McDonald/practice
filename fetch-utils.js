@@ -28,12 +28,14 @@ export async function getDirectorNames() {
 
 export async function getMovieById(id) {
   // return the movie with the given id
-  const movieId = await client.from("movies").select("id");
-  return checkError(movieId);
+  //const resp = await client.from("movies").select("id");
+  //return checkError(resp.id);
 }
 
 export async function getMovieByTitle(title) {
   // return the movie with the given title
+  const movieTitle = await client.from("movies").select("title");
+  return checkError(movieTitle);
 }
 
 export async function getOldestMovie() {

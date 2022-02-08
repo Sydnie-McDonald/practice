@@ -22,7 +22,7 @@ test("getMovies should return the list of movies", async (expect) => {
 test("getMoviesWithDirector returns movies with director", async (expect) => {
   const resp = await getMoviesWithDirector();
   expect.equal(resp.length, 13);
-  expect.notEqual(resp[0].directors, movies);
+  expect.notEqual(resp[0].directors, undefined);
 });
 
 test("getDirectorNames returns the list of director names", async (expect) => {
@@ -32,12 +32,12 @@ test("getDirectorNames returns the list of director names", async (expect) => {
   expect.equal(Object.keys(resp[0]).length, 1); // should ONLY return the name
 });
 
-test("getMovieById returns a specific movie by ID", async (expect) => {
+skip("getMovieById returns a specific movie by ID", async (expect) => {
   const resp = await getMovieById(2);
   expect.equal(resp.title, "Episode V - The Empire Strikes Back");
 });
 
-skip("getMovieByTitle should match using title", async (expect) => {
+test("getMovieByTitle should match using title", async (expect) => {
   const resp = await getMovieByTitle("Episode V - The Empire Strikes Back");
   expect.equal(resp.id, 2);
 });
